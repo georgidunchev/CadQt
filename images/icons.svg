@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="icons.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.73"
+     inkscape:cx="230.85753"
+     inkscape:cy="306.47318"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="748"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:none;stroke-width:0.99999994000000003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1;opacity:0"
+       id="rect2985"
+       width="49"
+       height="49"
+       x="197.14299"
+       y="606.21918"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawLine.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:none;stroke:none;stroke-width:0.99999994000000003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
+       id="rect2985-1"
+       width="49"
+       height="49"
+       x="273.35715"
+       y="608.2193"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawCurve.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:none;stroke:none;stroke-width:0.99999994000000003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
+       id="rect2985-7"
+       width="49"
+       height="49"
+       x="344.42856"
+       y="595.7193"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawRect.png" />
+    <rect
+       style="fill:none;stroke:none;stroke-width:0.99999994000000003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
+       id="rect2985-4"
+       width="49"
+       height="49"
+       x="415.85715"
+       y="606.79077"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawPolygon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 204.28571,649.1479 34.64286,-34.28572"
+       id="path3826"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawLine.png" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 279.28571,650.57647 c -2.98819,-31.2833 35.33882,-3.68063 33.92858,-34.28572"
+       id="path3828"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawCurve.png" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3830"
+       width="36.785713"
+       height="22.857143"
+       x="350.71429"
+       y="608.07648"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawRect.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 421.07143,633.79075 8.21428,-19.28571 27.14286,1.07143 1.07143,22.5 -11.42857,8.21428 -18.92857,-2.5 z"
+       id="path3832"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\drawPolygon.png" />
+    <rect
+       style="opacity:0;fill:none;stroke:none"
+       id="rect2985-17"
+       width="49"
+       height="49"
+       x="198.38716"
+       y="694.54926"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\translate.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Aharoni;-inkscape-font-specification:Aharoni Bold"
+       x="222.67622"
+       y="739.09711"
+       id="text3015"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\translate.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3017"
+         x="207.07564"
+         y="739.09711"
+         style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Gabriola;-inkscape-font-specification:Gabriola;text-anchor:middle;text-align:center">T</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3019"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion3021"><rect
+           id="rect3023"
+           width="149.71098"
+           height="142.19653"
+           x="139.8844"
+           y="650.62805" /></flowRegion><flowPara
+         id="flowPara3025" /></flowRoot>    <rect
+       style="opacity:0;fill:none;stroke:none"
+       id="rect2985-17-9"
+       width="49"
+       height="49"
+       x="301.51157"
+       y="693.18011"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\rotate.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Aharoni;-inkscape-font-specification:Aharoni Bold"
+       x="325.80063"
+       y="737.72797"
+       id="text3015-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\rotate.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3017-5"
+         x="325.80063"
+         y="737.72797"
+         style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Gabriola;-inkscape-font-specification:Gabriola">R</tspan></text>
+    <rect
+       style="opacity:0;fill:none;stroke:none"
+       id="rect2985-17-9-1"
+       width="49"
+       height="49"
+       x="400.93353"
+       y="690.28992"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\scale.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Aharoni;-inkscape-font-specification:Aharoni Bold"
+       x="425.2226"
+       y="734.83777"
+       id="text3015-8-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\scale.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3017-5-9"
+         x="425.2226"
+         y="734.83777"
+         style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Gabriola;-inkscape-font-specification:Gabriola">S</tspan></text>
+    <rect
+       style="opacity:0;fill:none;stroke:none"
+       id="rect2985-0"
+       width="49"
+       height="49"
+       x="200.35548"
+       y="786.24371"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\findCircle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:2.61355734;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3820"
+       sodipodi:cx="40.751446"
+       sodipodi:cy="789.64545"
+       sodipodi:rx="14.739884"
+       sodipodi:ry="14.739884"
+       d="m 55.49133,789.64545 a 14.739884,14.739884 0 1 1 -29.479769,0 14.739884,14.739884 0 1 1 29.479769,0 z"
+       transform="matrix(1.1475735,0,0,1.1481483,177.98358,-96.014798)"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\findCircle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.61355734;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3822"
+       sodipodi:cx="20.520231"
+       sodipodi:cy="722.59338"
+       sodipodi:rx="3.1791906"
+       sodipodi:ry="3.1791906"
+       d="m 23.699422,722.59338 a 3.1791906,3.1791906 0 1 1 -6.358381,0 3.1791906,3.1791906 0 1 1 6.358381,0 z"
+       transform="matrix(1.1475735,0,0,1.1481483,186.93863,-30.643351)"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\findCircle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.1475735,0,0,1.1481483,217.12048,-22.347468)"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.61355734;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3822-2"
+       sodipodi:cx="20.520231"
+       sodipodi:cy="722.59338"
+       sodipodi:rx="3.1791906"
+       sodipodi:ry="3.1791906"
+       d="m 23.699422,722.59338 a 3.1791906,3.1791906 0 1 1 -6.358381,0 3.1791906,3.1791906 0 1 1 6.358381,0 z"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\findCircle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.1475735,0,0,1.1481483,207.83377,-3.7647199)"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.61355734;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3822-1"
+       sodipodi:cx="20.520231"
+       sodipodi:cy="722.59338"
+       sodipodi:rx="3.1791906"
+       sodipodi:ry="3.1791906"
+       d="m 23.699422,722.59338 a 3.1791906,3.1791906 0 1 1 -6.358381,0 3.1791906,3.1791906 0 1 1 6.358381,0 z"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\findCircle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.1475735,0,0,1.1481483,197.88371,-17.701781)"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.61355734;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3822-9"
+       sodipodi:cx="20.520231"
+       sodipodi:cy="722.59338"
+       sodipodi:rx="3.1791906"
+       sodipodi:ry="3.1791906"
+       d="m 23.699422,722.59338 a 3.1791906,3.1791906 0 1 1 -6.358381,0 3.1791906,3.1791906 0 1 1 6.358381,0 z"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\findCircle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0;fill:none;stroke:none"
+       id="rect2985-0-8"
+       width="49"
+       height="49"
+       x="304.97977"
+       y="782.77545"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\controlPoints.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3958"
+       transform="translate(-81.502883,-47.97693)"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\controlPoints.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3893"
+         d="m 392.879,838.52862 35.51102,8.36185 -11.14072,25.0856 -21.58512,-10.45233 z"
+         style="fill:none;stroke:#000000;stroke-width:2.99999976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="836.08978"
+         x="390.44196"
+         height="7.6650414"
+         width="7.6592398"
+         id="rect3895"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="843.75476"
+         x="423.86411"
+         height="7.6650414"
+         width="7.6592398"
+         id="rect3895-3"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="866.74994"
+         x="412.72342"
+         height="7.6650414"
+         width="7.6592398"
+         id="rect3895-0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="856.29761"
+         x="392.53088"
+         height="7.6650414"
+         width="7.6592398"
+         id="rect3895-32"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>

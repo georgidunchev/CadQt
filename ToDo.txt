@@ -1,0 +1,14 @@
+to fix
+done - moving first point breaks transformations
+done - moving CP 1 or 3 of a rectangle changes CP 0 -> problem
+- some strange output
+
+to add
+- curve with paint() by me
+- get centre point for each shape
+- make centre point moveable and have a 'reset centre point' button
+
+done
+- control points should be transformed and then added to the item
+- transformations should: cut excisting transformations, apply new, apply exciting
+
