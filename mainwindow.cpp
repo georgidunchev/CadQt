@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "cadscene.h"
-#include "caditem.h"
+//#include "caditem.h"
 #include "cadcontrolpointrectitem.h"
 #include <QtGui>
 #include <QLabel>
@@ -310,7 +310,6 @@ void MainWindow::createToolbars()
 
 CadItem* MainWindow::castQGraphicsItemToCadItem(QGraphicsItem * item)
 {
-//    long a = item->type();
     switch (item->type())
     {
     case CadLineItem::Type:
@@ -328,11 +327,4 @@ CadItem* MainWindow::castQGraphicsItemToCadItem(QGraphicsItem * item)
     default:
         return 0;
     }
-
-//    if(a==CadLineItem::Type)
-//        return (qgraphicsitem_cast<CadLineItem *> (item));
-//    else if(a==CadRectItem::Type)
-//        return (qgraphicsitem_cast<CadRectItem *> (item));
-//    else
-//        return 0;
 }

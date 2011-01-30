@@ -23,8 +23,47 @@ CadBoundingCircle::CadBoundingCircle(QGraphicsItem * parent)
 
 void CadBoundingCircle::setPoints(const QPolygonF &newPoints)
 {
-    points = newPoints;
-//    setRect(points.boundingRect());
+    points = newPoints; 
+    if(points.size()==2)
+    {
+        centrePoint = findCentrePoint(points.first(),points.last());
+        radius = sqrt(calcLineLength(points.first(),points.last()))/2;
+        cen = points;
+
+        QPainterPath path2,path3;
+
+        path2.addPolygon(cen);
+        path2.closeSubpath();
+        pI1->setPath(path2);
+
+        QRectF re(centrePoint.x()-radius,centrePoint.y()-radius,radius*2,radius*2);
+        path3.addEllipse(re);
+        pI2->setPath(path3);
+    }
+    else if(points.size()>=3)
+    {
+        sortPoints();
+        calcConvexHull();
+        findBoundingCircle();
+        QPainterPath path1,path2,path3;
+
+        path1.addPolygon(convexHull);
+        path1.closeSubpath();
+        setPath(path1);
+
+        path2.addPolygon(cen);
+        path2.closeSubpath();
+        pI1->setPath(path2);
+
+        QRectF re(centrePoint.x()-radius,centrePoint.y()-radius,radius*2,radius*2);
+        path3.addEllipse(re);
+        pI2->setPath(path3);
+    }
+}
+
+QPointF CadBoundingCircle::getCentrePoint()
+{
+    return centrePoint;
 }
 
 void CadBoundingCircle::addPoint(const QPointF &newpoint)

@@ -12,8 +12,8 @@ CadCurveItem::CadCurveItem(CadType cadType)
     QGraphicsItem::setFlag(QGraphicsItem::ItemIsSelectable, true);
 //    setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 
-//    boundingCircle = new CadBoundingCircle(this);
-//    boundingCircle->setVisible(false);
+    boundingCircle = new CadBoundingCircle(this);
+    boundingCircle->setVisible(false);
 
     QColor color = Qt::black;
     setPen(QPen(color, 2));
@@ -98,24 +98,28 @@ void CadCurveItem::translate(QPointF modifier)
 
 void CadCurveItem::setShape(bool transform)
 {
-    if(transform) transformPoints();
+    if(transform)
+        transformPoints();
+
     QPainterPath path;
     path.moveTo(points[0]);
     path.cubicTo(points.at(2),points.at(3),points.at(1));
     setPath(path);
+
+    CadItem::setShape();
 }
 
 void CadCurveItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-//    if(((CadScene *) scene())->isBoundingCircleOn())
-//    {
-//        if( !isConstructed() || isSelected() )
-//            boundingCircle->setVisible(true);
-//        else
-//            boundingCircle->setVisible(false);
-//    }
-//    else
-//        boundingCircle->setVisible(false);
+    if(((CadScene *) scene())->isBoundingCircleOn())
+    {
+        if( !isConstructed() || isSelected() )
+            boundingCircle->setVisible(true);
+        else
+            boundingCircle->setVisible(false);
+    }
+    else
+        boundingCircle->setVisible(false);
 
     if( isSelected()
         || controlPointsGroup->controlPointSelected() )

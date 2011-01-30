@@ -14,6 +14,8 @@ CadItem::CadItem(CadType cadType)
     rotAngle = 0;
     scaleFactor = QPointF(1,1);
 
+//    resetOriginPoint();
+
     qreal matrix[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
     for(int i=0;i<3;i++)
         for(int j=0;j <3; j++)
@@ -57,6 +59,19 @@ void CadItem::updatePointsPolygon(int id, QPointF newPoint)
     setShape();
 }
 
+void CadItem::resetOriginPoint()
+{
+//    originPoint = (points.first()+points.last())/2;
+//    qDebug()<<points.first()<<points.last()<<originPoint;
+    originPoint = boundingCircle->getCentrePoint();
+}
+
+void CadItem::updateOriginPoint(QPointF newPoint)
+{
+    originPoint = newPoint;
+    qDebug()<<originPoint<<points.at(0);
+}
+
 void CadItem::setBoundingCircle(bool b)
 {
     bBoundingCircle=b;
@@ -96,7 +111,8 @@ void CadItem::rotate(qreal angle)
 {
     rotAngle = angle;
     if(rotAngle>=360) rotAngle-=360;
-    originPoint = points.at(qrand()%(pointPolygon.size()));//pointPolygon.first();
+//    originPoint = points.at(qrand()%(pointPolygon.size()));
+//    originPoint = pointPolygon.first();
 
     qreal matrix[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
     qreal revTrans[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
@@ -128,7 +144,8 @@ void CadItem::scale(QPointF factor)
     scaleFactor.setX(factor.rx());
     scaleFactor.setY(factor.ry());
 
-    originPoint = points.at(qrand()%(pointPolygon.size()));//pointPolygon.first();
+    //    originPoint = points.at(qrand()%(pointPolygon.size()));
+//        originPoint = pointPolygon.first();
 
     qreal matrix[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
     qreal revTrans[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
@@ -156,6 +173,8 @@ void CadItem::scale(QPointF factor)
 void CadItem::setShape(bool transform)
 {
 //    controlPointsGroup->updatePoints(points);
+    if(isConstructed())
+        boundingCircle->setPoints(points);
 }
 
 void CadItem::transformPoints()
@@ -202,16 +221,24 @@ QPointF CadItem::transformPoint(const QPointF &point/*, qreal transformMatrix[3]
 
 void CadItem::setControlPointsItem()
 {
-    controlPointsGroup->setPoints(points);
+    controlPointsGroup->setPoints(points,originPoint);
+
 }
 
 void CadItem::updateControlPointsItem()
 {
-    controlPointsGroup->updatePoints(points);
+    controlPointsGroup->updatePoints(points,originPoint);
 }
 
 void CadItem::setConstructed(bool b)
 {
+    if(b)
+    {
+        boundingCircle->setPoints(points);
+        resetOriginPoint();
+    }
+    //    boundingCircle->getCentrePoint();
+
     constructed = b;
 }
 

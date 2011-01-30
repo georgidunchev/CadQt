@@ -47,7 +47,7 @@ void CadRectItem::addPoint(QPointF point)
         QPointF first = pointPolygon.first();
         pointPolygon.clear();
         pointPolygon = rectToPoly(first, point);
-        boundingCircle->setPoints(getPointsPolygon());
+//        boundingCircle->setPoints(getPointsPolygon());
         nOfPoints=2;
     }
     setShape();
@@ -124,7 +124,7 @@ void CadRectItem::updatePointsPolygon(int id, QPointF newPoint)
         break;
     }
     setShape();
-    controlPointsGroup->updatePoints(points);
+    controlPointsGroup->updatePoints(points, originPoint);
 
 }
 
@@ -159,8 +159,7 @@ void CadRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     else
         boundingCircle->setVisible(false);
 
-    if( isSelected()
-        || controlPointsGroup->controlPointSelected() )
+    if( isSelected() || controlPointsGroup->controlPointSelected() )
         controlPointsGroup->setVisible(((CadScene *) scene())->isControlPointsOn());
     else
         controlPointsGroup->setVisible(false);

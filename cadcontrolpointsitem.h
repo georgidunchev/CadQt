@@ -3,21 +3,19 @@
 
 #include <QGraphicsItemGroup>
 #include "cadcontrolpointrectitem.h"
-//#include "mainwindow.h"
 
 class CadControlPointsItem : public QGraphicsItemGroup
 {
 public:
-    CadControlPointsItem();
-    void setPoints(const QPolygonF & newPoints);
-    void updatePoints(const QPolygonF & newPoints);
+    CadControlPointsItem(QGraphicsItem * parent = 0);
+    void setPoints(const QPolygonF & newPoints, const QPointF & newOriginPoint);
+    void updatePoints(const QPolygonF & newPoints, const QPointF & newOriginPoint);
     void setVisible(bool visible);
     bool controlPointSelected();
 private:
-//    void addControlPoint(QPointF p);
     QPolygonF points;
     QList<CadControlPointRectItem*> controlPointItems;
-//    MainWindow * mw;
+    CadControlPointRectItem * originPoint;
 };
 
 #endif // CADCONTROLPOINTSITEM_H

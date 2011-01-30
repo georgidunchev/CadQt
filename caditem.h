@@ -5,6 +5,7 @@
 #include "cadboundingcircle.h"
 #include "cadcontrolpointsitem.h"
 //#include "cadscene.h"
+//#include "mainwindow.h"
 
 class CadItem
 {
@@ -21,6 +22,8 @@ public:
     QPolygonF * getPoints();
     virtual void updateCurrentPoints(int id, QPointF newPoint);
     virtual void updatePointsPolygon(int id, QPointF newPoint);
+    virtual void updateOriginPoint(QPointF newPoint);
+    virtual void resetOriginPoint();
 
     virtual void setBoundingCircle(bool b);
     virtual void setControlPoints(bool b);

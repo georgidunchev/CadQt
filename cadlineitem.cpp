@@ -31,6 +31,7 @@ bool CadLineItem::isFinished()
     {
         setConstructed(true);
         setControlPointsItem();
+//        resetOriginPoint();
         //        controlPointsGroup->setPoints(getPointsPolygon());
         return true;
     }
@@ -40,7 +41,7 @@ bool CadLineItem::isFinished()
 
 void CadLineItem::addPoint(QPointF point)
 {
-    this->setSelected(true);
+    setSelected(true);
     if(nOfPoints==0)
     {
         pointPolygon<<point;
@@ -50,7 +51,7 @@ void CadLineItem::addPoint(QPointF point)
     else if(nOfPoints==1)
     {
         pointPolygon[1]=point;
-        boundingCircle->setPoints(getPointsPolygon());
+//        boundingCircle->setPoints(getPointsPolygon());
         nOfPoints=2;
     }
     setShape();

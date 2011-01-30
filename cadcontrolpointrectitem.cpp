@@ -3,15 +3,21 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include "caditem.h"
-#include "mainwindow.h"
+//#include "mainwindow.h"
 
-CadControlPointRectItem::CadControlPointRectItem(int id, const QPointF &point, QGraphicsItem *parent)
+CadControlPointRectItem::CadControlPointRectItem(int id, const QPointF &point, CadItem *parentCadItem, QGraphicsItem *parent, bool edgePoint)
     : QGraphicsRectItem(parent)
 {
     controlPointId = id;
     setPoint(point);
+    parentItem = parentCadItem;
+    isEdgePoint=edgePoint;
 
-    QColor color = Qt::gray;
+    QColor color;
+    if(edgePoint)
+        color = Qt::gray;
+    else
+        color = Qt::blue;
     setBrush(QBrush(color));
     setPen(QPen(color));
 
@@ -27,23 +33,23 @@ void CadControlPointRectItem::setPoint(const QPointF &point)
 
 QRectF CadControlPointRectItem::calcRect()
 {
-    QPointF p1 = QPointF(-3,-3);
-    QPointF p2 = QPointF(3,3);
-    return QRectF(p1,p2);
+    return QRectF(QPointF(-3,-3),QPointF(3,3));
 }
 
 void CadControlPointRectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    MainWindow * mw =  (MainWindow * ) scene()->parent();
-    CadItem * ci = mw->castQGraphicsItemToCadItem(parentItem());
-    QPointF newpoint = pos();
-    ci->updatePointsPolygon(controlPointId, newpoint);
+    if(isEdgePoint)
+        parentItem->updatePointsPolygon(controlPointId, pos());
+    else
+        parentItem->updateOriginPoint(pos());
     QGraphicsRectItem::mouseMoveEvent(event);
 }
+
 void CadControlPointRectItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    MainWindow * mw =  (MainWindow * ) scene()->parent();
-    CadItem * ci = mw->castQGraphicsItemToCadItem(parentItem());
-    ci->updatePointsPolygon(controlPointId,pos());
+    if(isEdgePoint)
+        parentItem->updatePointsPolygon(controlPointId, pos());
+    else
+        parentItem->updateOriginPoint(pos());
     QGraphicsRectItem::mouseReleaseEvent(event);
 }

@@ -11,6 +11,7 @@ public:
     CadBoundingCircle(QGraphicsItem * parent = 0);
     void setPoints(const QPolygonF & newPoints);
     void addPoint(const QPointF & newpoint);
+    QPointF getCentrePoint();
 
 //    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 

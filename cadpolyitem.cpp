@@ -45,6 +45,7 @@ void CadPolyItem::addPoint(QPointF point)
         setPolygon(pointPolygon);
     }
     nOfPoints++;
+    setShape();
     boundingCircle->addPoint(point);
 }
 
@@ -79,6 +80,7 @@ void CadPolyItem::setShape(bool transform)
 {
     if(transform) transformPoints();
     setPolygon(points);
+    CadItem::setShape();
 }
 
 void CadPolyItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

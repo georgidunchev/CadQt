@@ -5,24 +5,27 @@
 #include "cadcontrolpointrectitem.h"
 //#include "caditem.h"
 //#include "mainwindow.h"
+class CadItem;
 
 class CadControlPointRectItem : public QGraphicsRectItem
 {
 public:
-    CadControlPointRectItem(int id, const QPointF & point, QGraphicsItem * parent = 0);
+    CadControlPointRectItem(int id, const QPointF & point, CadItem * parentCadItem,  QGraphicsItem * parent = 0, bool edgePoint = true);
 
     enum { Type = UserType+5};
     int type() const
         { return Type; }
 
     void setPoint(const QPointF & point);
-private:
-    int controlPointId;
-    QRectF calcRect();
 
+private:
+    QRectF calcRect();
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-//    MainWindow * mw;
+
+    CadItem * parentItem;
+    int controlPointId;
+    bool isEdgePoint;
 };
 
 #endif // CADCONTROLPOINTRECTITEM_H
