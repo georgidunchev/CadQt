@@ -20,7 +20,7 @@ CadLineItem::CadLineItem(CadType cadType)
     boundingCircle = new CadBoundingCircle(this);
     boundingCircle->setVisible(false);
 
-    controlPointsGroup = new CadControlPointsItem();
+    controlPointsGroup = new CadControlPointsItem(this);
     controlPointsGroup->setVisible(false);
     controlPointsGroup->setParentItem(this);
 }

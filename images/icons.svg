@@ -26,14 +26,14 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.73"
      inkscape:cx="230.85753"
-     inkscape:cy="306.47318"
+     inkscape:cy="283.35179"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3958-7"
      showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="748"
      inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-y="22"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -335,6 +335,41 @@
          width="7.6592398"
          id="rect3895-32"
          style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <rect
+       style="opacity:0;fill:none;stroke:none"
+       id="rect2985-0-8-1"
+       width="49"
+       height="49"
+       x="400.93353"
+       y="783.93158"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\myCadQt\CadQt\images\originPoint.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3958-7"
+       transform="translate(14.450876,-46.820833)"
+       inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\CadQt\images\controlPoints.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3893-4"
+         d="m 392.879,838.52862 35.51102,8.36185 -11.14072,25.0856 -21.58512,-10.45233 z"
+         style="fill:none;stroke:#000000;stroke-width:2.99999976;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\myCadQt\CadQt\images\originPoint.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <rect
+         y="851.09528"
+         x="405.24765"
+         height="7.6650414"
+         width="7.6592398"
+         id="rect3895-32-8"
+         style="fill:#0000ff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         inkscape:export-filename="D:\n3x\FMI\1 CAD\myCadQt\myCadQt\CadQt\images\originPoint.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
     </g>
   </g>
 </svg>

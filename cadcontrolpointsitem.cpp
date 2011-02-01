@@ -23,6 +23,13 @@ void CadControlPointsItem::setPoints(const QPolygonF &newPoints, const QPointF &
         controlPointItems.append(rectItem);
     }
 
+//    originPoint = new CadControlPointRectItem(0,newOriginPoint, ci, parentItem(),false);
+}
+
+void CadControlPointsItem::setOriginPoint(const QPointF &newOriginPoint)
+{
+    MainWindow * mw =  (MainWindow * ) scene()->parent();
+    CadItem * ci = mw->castQGraphicsItemToCadItem(parentItem());
     originPoint = new CadControlPointRectItem(0,newOriginPoint, ci, parentItem(),false);
 }
 
@@ -35,10 +42,13 @@ void CadControlPointsItem::updatePoints(const QPolygonF &newPoints, const QPoint
 
     for(int i = 0; i<points.size();i++)
     {
-                controlPointItems.at(i)->setPoint(points.at(i));
+        controlPointItems.at(i)->setPoint(points.at(i));
     }
+}
 
-
+void CadControlPointsItem::updateOriginPoint(const QPointF &newOriginPoint)
+{
+    originPoint->setPoint(newOriginPoint);
 }
 
 void CadControlPointsItem::setVisible(bool visible)
@@ -47,6 +57,7 @@ void CadControlPointsItem::setVisible(bool visible)
     {
         controlPointItems.at(i)->setVisible(visible);
     }
+//    originPoint->setVisible(visible);
     QGraphicsItem::setVisible(visible);
 }
 

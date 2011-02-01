@@ -44,6 +44,7 @@ private slots:
 
     void showControlPoints(bool b);
     void setBoundingCircle(bool b);
+    void resetOriginPoint();
 
     void setTracking(bool b);
 
@@ -82,11 +83,13 @@ private:
 
     QAction *showCircleAction;
     QAction *showControlPointsAction;
+    QAction *resetOriginPointAction;
 
     QAction *aboutAction;
 
     QMenu *fileMenu;
-    QMenu *itemMenu;
+    QMenu *shapeMenu;
+    QMenu * actionsMenu;
     QMenu *aboutMenu;
 
     QToolBar *textToolBar;

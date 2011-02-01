@@ -39,6 +39,15 @@ void CadItem::updateCurrentPoints(int id, QPointF newPoint)
 
 void CadItem::updatePointsPolygon(int id, QPointF newPoint)
 {
+    //new stuff
+//    qDebug()<<pointPolygon[id]<<originPoint<<newPoint<<
+////            (newPoint.x()-originPoint.x())<<(pointPolygon[id].x()-originPoint.x())<<
+//            QPointF((newPoint.x()-originPoint.x())/(pointPolygon[id].x()-originPoint.x())
+//                   ,(newPoint.y()-originPoint.y())/(pointPolygon[id].y()-originPoint.y()));
+//    scale(QPointF((newPoint.x()-originPoint.x())/(pointPolygon[id].x()-originPoint.x())
+//                  ,(newPoint.y()-originPoint.y())/(pointPolygon[id].y()-originPoint.y())));
+    ///newstuff
+
     qreal point[3][3] = {{newPoint.x(),0,0},{newPoint.y(),0,0},{1,0,0}};
     qreal a = transformMatrix[0][0];
     qreal b = transformMatrix[0][1];
@@ -56,20 +65,24 @@ void CadItem::updatePointsPolygon(int id, QPointF newPoint)
     multiply(matrix, point);
     pointPolygon[id] =  QPointF(matrix[0][0],matrix[1][0]);
 
+
+
     setShape();
 }
 
+void CadItem::setOriginPoint()
+{
+    originPoint = boundingCircle->getCentrePoint();
+}
 void CadItem::resetOriginPoint()
 {
-//    originPoint = (points.first()+points.last())/2;
-//    qDebug()<<points.first()<<points.last()<<originPoint;
     originPoint = boundingCircle->getCentrePoint();
+    controlPointsGroup->updateOriginPoint(originPoint);
 }
 
 void CadItem::updateOriginPoint(QPointF newPoint)
 {
     originPoint = newPoint;
-    qDebug()<<originPoint<<points.at(0);
 }
 
 void CadItem::setBoundingCircle(bool b)
@@ -173,6 +186,7 @@ void CadItem::scale(QPointF factor)
 void CadItem::setShape(bool transform)
 {
 //    controlPointsGroup->updatePoints(points);
+//    fasdfasd
     if(isConstructed())
         boundingCircle->setPoints(points);
 }
@@ -222,7 +236,7 @@ QPointF CadItem::transformPoint(const QPointF &point/*, qreal transformMatrix[3]
 void CadItem::setControlPointsItem()
 {
     controlPointsGroup->setPoints(points,originPoint);
-
+    controlPointsGroup->setOriginPoint(originPoint);
 }
 
 void CadItem::updateControlPointsItem()
@@ -235,7 +249,7 @@ void CadItem::setConstructed(bool b)
     if(b)
     {
         boundingCircle->setPoints(points);
-        resetOriginPoint();
+        setOriginPoint();
     }
     //    boundingCircle->getCentrePoint();
 

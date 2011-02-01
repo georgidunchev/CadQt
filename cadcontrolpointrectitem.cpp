@@ -2,15 +2,17 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsScene>
 #include <QDebug>
+#include <QPainter>
 #include "caditem.h"
+#include "cadscene.h"
 //#include "mainwindow.h"
 
-CadControlPointRectItem::CadControlPointRectItem(int id, const QPointF &point, CadItem *parentCadItem, QGraphicsItem *parent, bool edgePoint)
+CadControlPointRectItem::CadControlPointRectItem(int id, const QPointF &point, CadItem *parentCI, QGraphicsItem *parent, bool edgePoint)
     : QGraphicsRectItem(parent)
 {
     controlPointId = id;
     setPoint(point);
-    parentItem = parentCadItem;
+    parentCadItem = parentCI;
     isEdgePoint=edgePoint;
 
     QColor color;
@@ -36,20 +38,44 @@ QRectF CadControlPointRectItem::calcRect()
     return QRectF(QPointF(-3,-3),QPointF(3,3));
 }
 
+void CadControlPointRectItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    parentItem()->setSelected(true);
+    parentItem()->QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, false);
+    QGraphicsRectItem::mousePressEvent(event);
+}
+
 void CadControlPointRectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+//    parentItem()->setSelected(true);
+
     if(isEdgePoint)
-        parentItem->updatePointsPolygon(controlPointId, pos());
+        parentCadItem->updatePointsPolygon(controlPointId, pos());
     else
-        parentItem->updateOriginPoint(pos());
+        parentCadItem->updateOriginPoint(pos());
     QGraphicsRectItem::mouseMoveEvent(event);
 }
 
 void CadControlPointRectItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if(isEdgePoint)
-        parentItem->updatePointsPolygon(controlPointId, pos());
+        parentCadItem->updatePointsPolygon(controlPointId, pos());
     else
-        parentItem->updateOriginPoint(pos());
+    {
+        parentCadItem->updateOriginPoint(pos());
+    }
     QGraphicsRectItem::mouseReleaseEvent(event);
+
+    setSelected(false);
+
+    parentItem()->setSelected(true);
+    parentItem()->QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
+}
+
+void CadControlPointRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+//    QGraphicsRectItem::paint(painter,option,widget);
+    painter->setPen(pen());
+    painter->setBrush(brush());
+    painter->drawRect(rect());
 }

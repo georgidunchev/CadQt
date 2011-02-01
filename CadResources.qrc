@@ -13,5 +13,6 @@
         <file>images/translate.png</file>
         <file>images/controlPoints.png</file>
         <file>images/findCircle.png</file>
+        <file>images/originPoint.png</file>
     </qresource>
 </RCC>

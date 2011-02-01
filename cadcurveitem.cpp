@@ -1,5 +1,6 @@
 #include "cadcurveitem.h"
-
+#include <QPainter>
+#include <qmath.h>
 #include "qtransform.h"
 #include "cadscene.h"
 #include "qdebug.h"
@@ -16,7 +17,7 @@ CadCurveItem::CadCurveItem(CadType cadType)
     boundingCircle->setVisible(false);
 
     QColor color = Qt::black;
-    setPen(QPen(color, 2));
+    setPen(QPen(color, 1));
 
     controlPointsGroup = new CadControlPointsItem();
     controlPointsGroup->setVisible(false);
@@ -121,12 +122,45 @@ void CadCurveItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     else
         boundingCircle->setVisible(false);
 
-    if( isSelected()
-        || controlPointsGroup->controlPointSelected() )
+    if( isSelected() || controlPointsGroup->controlPointSelected() )
         controlPointsGroup->setVisible(((CadScene *) scene())->isControlPointsOn());
     else
         controlPointsGroup->setVisible(false);
 
+    QColor color = Qt::red;
+    setPen(QPen(color, 4));
     QGraphicsPathItem::paint(painter,option,widget);
+
+    painter->setPen(QPen(Qt::black, 1));
+
+    painter->drawLine(points.at(0),points.at(2));
+    painter->drawLine(points.at(2),points.at(3));
+    painter->drawLine(points.at(3),points.at(1));
+
+    QVector<qreal> B;
+    QPointF prevPoint = points.at(0);
+    QPointF curPoint;
+    for(qreal t = 0.01; t<1; t+=0.01)
+    {
+        B = calcB(t);
+        curPoint = QPointF(0,0);
+        for(int i=0;i<4;i++)
+        {
+            curPoint.setX(curPoint.x()+((QPointF)points[i]).x()*B[i]);
+            curPoint.setY(curPoint.y()+((QPointF)points[i]).y()*B[i]);
+        }
+        painter->drawLine(prevPoint,curPoint);
+        prevPoint = curPoint;
+    }
+    painter->drawLine(prevPoint,points.at(1));
 }
 
+QVector<qreal> CadCurveItem::calcB(qreal t) const
+{
+    QVector<qreal> res(4,0);
+    res[0] = (1-t)*(1-t)*(1-t);
+    res[2] = 3*t*(1-t)*(1-t);
+    res[3] = 3*t*t*(1-t);
+    res[1] = t*t*t;
+    return res;
+}

@@ -30,6 +30,7 @@ private:
     QPointF p1,p2;
     int nOfPoints;
     QPolygonF polyToCurve(const QPolygonF & poly);
+    QVector<qreal> calcB(qreal t) const;
 };
 
 #endif // CADCURVEITEM_H

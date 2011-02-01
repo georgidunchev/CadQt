@@ -10,6 +10,8 @@ public:
     CadControlPointsItem(QGraphicsItem * parent = 0);
     void setPoints(const QPolygonF & newPoints, const QPointF & newOriginPoint);
     void updatePoints(const QPolygonF & newPoints, const QPointF & newOriginPoint);
+    void setOriginPoint(const QPointF & newOriginPoint);
+    void updateOriginPoint(const QPointF & newOriginPoint);
     void setVisible(bool visible);
     bool controlPointSelected();
 private:

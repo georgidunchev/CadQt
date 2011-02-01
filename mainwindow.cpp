@@ -12,7 +12,6 @@ const int InsertTextButton = 10;
 MainWindow::MainWindow()
 {
     createActions();
-//    createToolBox();
     createMenus();
 
     scene = new CadScene(/*itemMenu, */this);
@@ -20,7 +19,7 @@ MainWindow::MainWindow()
     connect(scene, SIGNAL(itemInserted()), this, SLOT(itemInserted()));
     connect(scene, SIGNAL(itemSelected(QGraphicsItem*)), this, SLOT(itemSelected(QGraphicsItem*)));
     connect(scene, SIGNAL(setTracking(bool)), this, SLOT(setTracking(bool)));
-
+//    connect(scene, SIGNAL(setAutoOriginPointSignal(bool)), this, SLOT(setAutoOriginPoint(bool)));
 
     createToolbars();
 
@@ -125,6 +124,16 @@ void MainWindow::scaleItem()
     CadItem * item = castQGraphicsItemToCadItem(scene->selectedItems().first());
     if(item) item->scale(QPointF(0.7,0.5));
 }
+void MainWindow::resetOriginPoint()
+{
+    if (scene->selectedItems().isEmpty())        return;
+    CadItem * item = castQGraphicsItemToCadItem(scene->selectedItems().first());
+    if(item)
+    {
+        item->resetOriginPoint();
+        scene->update(scene->sceneRect());
+    }
+}
 
 void MainWindow::setBoundingCircle(bool b)
 {
@@ -139,6 +148,8 @@ void MainWindow::showControlPoints(bool b)
 //    if (scene->selectedItems().isEmpty())        return;
 //    castQGraphicsItemToCadItem(scene->selectedItems().first())->scale(QPointF(0.7,0.5));
 }
+
+
 
 //void MainWindow::sendToBack()
 //{
@@ -242,6 +253,11 @@ void MainWindow::createActions()
     showControlPointsAction->setCheckable(true);
     connect(showControlPointsAction, SIGNAL(triggered(bool)), this, SLOT(showControlPoints(bool)));
 
+    resetOriginPointAction = new QAction(QIcon(":/images/originPoint.png"), tr("Set Auto Origin Point"), this);
+//    setAutoOriginPointAction->setCheckable(true);
+//    setAutoOriginPointAction->setChecked(true);
+    connect(resetOriginPointAction, SIGNAL(triggered()), this, SLOT(resetOriginPoint()));
+
     exitAction = new QAction(tr("E&xit"), this);
     exitAction->setShortcuts(QKeySequence::Quit);
     exitAction->setStatusTip(tr("Quit Scenediagram example"));
@@ -257,6 +273,13 @@ void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(exitAction);
+    actionsMenu = menuBar()->addMenu("Actions");
+    actionsMenu->addAction(translateAction);
+    actionsMenu->addAction(rotateAction);
+    actionsMenu->addAction(scaleAction);
+    actionsMenu->addAction(showCircleAction);
+    actionsMenu->addAction(showControlPointsAction);
+    actionsMenu->addAction(resetOriginPointAction);
 }
 
 void MainWindow::createToolbars()
@@ -306,6 +329,7 @@ void MainWindow::createToolbars()
     editToolBar->addAction(scaleAction);
     editToolBar->addAction(showCircleAction);
     editToolBar->addAction(showControlPointsAction);
+    editToolBar->addAction(resetOriginPointAction);
 }
 
 CadItem* MainWindow::castQGraphicsItemToCadItem(QGraphicsItem * item)

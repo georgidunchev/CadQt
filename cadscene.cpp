@@ -8,6 +8,7 @@ CadScene::CadScene(/*QMenu *itemMenu,*/ QObject *parent)
 {
     bBoundingCircle = false;
     bControlPoints = false;
+    bAutoOriginPoint = true;
 //    myItemMenu = itemMenu;
     myMode = MoveItem;
     myItemType = CadItem::Step;
@@ -310,6 +311,15 @@ bool CadScene::isControlPointsOn()
 {
     return bControlPoints;
 }
+
+//void CadScene::setAutoOriginPoint()
+//{
+//    selectedItems().first()->
+//}
+//bool CadScene::isAutoOriginPointOn()
+//{
+//    return bAutoOriginPoint;
+//}
 
 //void CadScene::showBoundingCircle(CadItem *item)
 //{

@@ -2,11 +2,12 @@ to fix
 done - moving first point breaks transformations
 done - moving CP 1 or 3 of a rectangle changes CP 0 -> problem
 - some strange output
+- some bugs with my curve drawing
 
 to add
-- curve with paint() by me
-- get centre point for each shape
-- make centre point moveable and have a 'reset centre point' button
+done - curve with paint() by me
+done - get centre point for each shape
+done - make centre point moveable and have a 'reset centre point' button
 
 done
 - control points should be transformed and then added to the item

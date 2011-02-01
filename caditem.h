@@ -24,6 +24,7 @@ public:
     virtual void updatePointsPolygon(int id, QPointF newPoint);
     virtual void updateOriginPoint(QPointF newPoint);
     virtual void resetOriginPoint();
+    virtual void setOriginPoint();
 
     virtual void setBoundingCircle(bool b);
     virtual void setControlPoints(bool b);

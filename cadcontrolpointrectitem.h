@@ -9,8 +9,9 @@ class CadItem;
 
 class CadControlPointRectItem : public QGraphicsRectItem
 {
+//        Q_OBJECT
 public:
-    CadControlPointRectItem(int id, const QPointF & point, CadItem * parentCadItem,  QGraphicsItem * parent = 0, bool edgePoint = true);
+    CadControlPointRectItem(int id, const QPointF & point, CadItem * parentCI,  QGraphicsItem * parent = 0, bool edgePoint = true);
 
     enum { Type = UserType+5};
     int type() const
@@ -20,12 +21,15 @@ public:
 
 private:
     QRectF calcRect();
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
-    CadItem * parentItem;
+    CadItem * parentCadItem;
     int controlPointId;
     bool isEdgePoint;
+
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };
 
 #endif // CADCONTROLPOINTRECTITEM_H

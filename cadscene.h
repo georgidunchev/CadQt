@@ -47,6 +47,9 @@ public:
     void setControlPoints(bool b);
     bool isControlPointsOn();
 
+//    void setAutoOriginPoint(bool b);
+//    bool isAutoOriginPointOn();
+
 
 
 public slots:
@@ -59,6 +62,8 @@ signals:
 //    void textInserted(QGraphicsTextItem *item);
     void itemSelected(QGraphicsItem *item);
     void setTracking(bool b);
+//    void setAutoOriginPointSignal(bool b);
+
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);
@@ -70,6 +75,7 @@ private:
 
     bool bBoundingCircle;
     bool bControlPoints;
+    bool bAutoOriginPoint;
 //    CadBoundingCircle * boundingCircle;
 
     CadItem::CadType myItemType;
