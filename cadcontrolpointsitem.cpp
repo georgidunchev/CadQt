@@ -1,4 +1,5 @@
 #include "cadcontrolpointsitem.h"
+#include "cadcontrolpointrectitem.h"
 #include "mainwindow.h"
 #include "caditem.h"
 #include <QGraphicsScene>
@@ -49,6 +50,11 @@ void CadControlPointsItem::updatePoints(const QPolygonF &newPoints, const QPoint
 void CadControlPointsItem::updateOriginPoint(const QPointF &newOriginPoint)
 {
     originPoint->setPoint(newOriginPoint);
+}
+
+QPointF CadControlPointsItem::getOriginPoint() const
+{
+    return originPoint->scenePos();
 }
 
 void CadControlPointsItem::setVisible(bool visible)

@@ -19,7 +19,6 @@ public:
     void addTempPoint(QPointF point);
 
     QGraphicsItem * getItem();
-    void translate(QPointF modifier);
 
     void setShape(bool transform = true);
 
@@ -28,7 +27,6 @@ public:
     void updatePointsPolygon(int id, QPointF newPoint);
 
 private:
-    QPointF p1,p2;
     int nOfPoints;
     QPolygonF rectToPoly(QPointF p1, QPointF p2);
 };

@@ -9,9 +9,8 @@ CadCurveItem::CadCurveItem(CadType cadType)
     : CadItem(cadType)
 {
     nOfPoints=0;
-    QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
+//    QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
     QGraphicsItem::setFlag(QGraphicsItem::ItemIsSelectable, true);
-//    setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 
     boundingCircle = new CadBoundingCircle(this);
     boundingCircle->setVisible(false);
@@ -30,8 +29,6 @@ bool CadCurveItem::isFinished()
     {
         setConstructed(true);
         setControlPointsItem();
-//        controlPointsGroup->setPoints(getPointsPolygon());
-        //        boundingCircle->setPoints(getPointsPolygon());
         return true;
     }
     else
@@ -58,7 +55,6 @@ void CadCurveItem::addPoint(QPointF point)
     else
     {
         pointPolygon[nOfPoints]=point;
-//        boundingCircle->setPoints(getPointsPolygon());
         setShape();
     }
     nOfPoints++;
@@ -78,23 +74,10 @@ void CadCurveItem::addTempPoint(QPointF point)
     }
 }
 
-QPolygonF CadCurveItem::polyToCurve(const QPolygonF &poly)
-{
-    QPolygonF polygon;
-//    polygon<<p1<<QPointF(p1.x(),p2.y())<<p2<<QPointF(p2.x(),p1.y());
-    return poly;
-}
 
 QGraphicsItem * CadCurveItem::getItem()
 {
     return this;
-}
-
-void CadCurveItem::translate(QPointF modifier)
-{
-    QTransform transform;
-    transform.translate(modifier.rx(), modifier.ry());
-    QGraphicsItem::setTransform(transform,true);
 }
 
 void CadCurveItem::setShape(bool transform)

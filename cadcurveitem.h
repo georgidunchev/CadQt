@@ -18,18 +18,13 @@ public:
     void addTempPoint(QPointF point);
 
     QGraphicsItem * getItem();
-    void translate(QPointF modifier);
 
     void setShape(bool transform = true);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-//    void updatePointsPolygon(int id, QPointF newPoint);
-
 private:
-    QPointF p1,p2;
     int nOfPoints;
-    QPolygonF polyToCurve(const QPolygonF & poly);
     QVector<qreal> calcB(qreal t) const;
 };
 

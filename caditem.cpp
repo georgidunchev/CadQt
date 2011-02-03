@@ -74,6 +74,11 @@ void CadItem::setOriginPoint()
 {
     originPoint = boundingCircle->getCentrePoint();
 }
+QPointF CadItem::getOriginPoint() const
+{
+//    return originPoint;
+    return controlPointsGroup->getOriginPoint();
+}
 void CadItem::resetOriginPoint()
 {
     originPoint = boundingCircle->getCentrePoint();
@@ -115,17 +120,52 @@ QGraphicsItem * CadItem::getItem()
     return 0;
 }
 
-void CadItem::translate(QPointF modifier)
+void CadItem::translate(QPointF modifier, bool temporal)
 {
 
+//    QTransform transform;
+//    transform.translate(modifier.rx(), modifier.ry());
+//    QGraphicsItem::setTransform(transform,true);
+
+    if(temporal)
+    {
+        for(int i=0;i<3;i++)
+            for(int j=0;j <3; j++)
+                tempTransformMatrix[i][j] = transformMatrix[i][j];
+    }
+
+    qreal trans[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+
+    trans[0][2] = modifier.rx();
+    trans[1][2] = modifier.ry();
+
+    multiply(trans,transformMatrix);
+
+    for(int i=0;i<3;i++)
+        for(int j=0;j <3; j++)
+            transformMatrix[i][j] = trans[i][j];
+
+    setShape();
+    updateControlPointsItem();
+    if(temporal)
+    {
+        for(int i=0;i<3;i++)
+            for(int j=0;j <3; j++)
+                transformMatrix[i][j] = tempTransformMatrix[i][j] ;
+    }
 }
 
-void CadItem::rotate(qreal angle)
+void CadItem::rotate(qreal angle, bool temporal)//qreal angle)
 {
     rotAngle = angle;
     if(rotAngle>=360) rotAngle-=360;
-//    originPoint = points.at(qrand()%(pointPolygon.size()));
-//    originPoint = pointPolygon.first();
+
+    if(temporal)
+    {
+        for(int i=0;i<3;i++)
+            for(int j=0;j <3; j++)
+                tempTransformMatrix[i][j] = transformMatrix[i][j];
+    }
 
     qreal matrix[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
     qreal revTrans[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
@@ -135,9 +175,9 @@ void CadItem::rotate(qreal angle)
     revTrans[0][2] = -(trans[0][2] = originPoint.rx());
     revTrans[1][2] = -(trans[1][2] = originPoint.ry());
 
-    qreal PI = 3.14159265;
-    rotate[0][0]=rotate[1][1]=cos(rotAngle*PI/180);
-    rotate[0][1]=-(rotate[1][0]=sin(rotAngle*PI/180));
+//    qreal PI = 3.14159265;
+    rotate[0][0]=rotate[1][1]=cos(rotAngle/**PI/180*/);
+    rotate[0][1]=-(rotate[1][0]=sin(rotAngle/**PI/180*/));
 
     multiply(matrix,trans);
     multiply(matrix,rotate);
@@ -150,15 +190,25 @@ void CadItem::rotate(qreal angle)
 
     setShape();
     updateControlPointsItem();
+    if(temporal)
+    {
+        for(int i=0;i<3;i++)
+            for(int j=0;j <3; j++)
+                transformMatrix[i][j] = tempTransformMatrix[i][j] ;
+    }
 }
 
-void CadItem::scale(QPointF factor)
+void CadItem::scale(QPointF factor, bool temporal)
 {
+    if(temporal)
+    {
+        for(int i=0;i<3;i++)
+            for(int j=0;j <3; j++)
+                tempTransformMatrix[i][j] = transformMatrix[i][j];
+    }
+
     scaleFactor.setX(factor.rx());
     scaleFactor.setY(factor.ry());
-
-    //    originPoint = points.at(qrand()%(pointPolygon.size()));
-//        originPoint = pointPolygon.first();
 
     qreal matrix[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
     qreal revTrans[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
@@ -175,18 +225,31 @@ void CadItem::scale(QPointF factor)
     multiply(matrix,scale);
     multiply(matrix,revTrans);
     multiply(matrix,transformMatrix);
+
     for(int i=0;i<3;i++)
         for(int j=0;j <3; j++)
             transformMatrix[i][j] = matrix[i][j];
 
     setShape();
     updateControlPointsItem();
+
+    if(temporal)
+    {
+        for(int i=0;i<3;i++)
+            for(int j=0;j <3; j++)
+                transformMatrix[i][j] = tempTransformMatrix[i][j] ;
+    }
+}
+
+void CadItem::setTempTransformations(bool b)
+{
+    for(int i=0;i<3;i++)
+        for(int j=0;j <3; j++)
+            tempTransformMatrix[i][j] = transformMatrix[i][j];
 }
 
 void CadItem::setShape(bool transform)
 {
-//    controlPointsGroup->updatePoints(points);
-//    fasdfasd
     if(isConstructed())
         boundingCircle->setPoints(points);
 }

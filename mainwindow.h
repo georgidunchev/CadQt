@@ -33,14 +33,14 @@ public:
    CadItem* castQGraphicsItemToCadItem(QGraphicsItem * item);
 
 private slots:
-    void backgroundButtonGroupClicked(QAbstractButton *button);
+//    void backgroundButtonGroupClicked(QAbstractButton *button);
     void buttonGroupClicked(int id);
     void deleteItem();
-    void pointerGroupClicked(int id);
+//    void pointerGroupClicked(int id);
 
-    void translateItem();
-    void rotateItem();
-    void scaleItem();
+    void translateItem(bool b);
+    void rotateItem(bool b);
+    void scaleItem(bool b);
 
     void showControlPoints(bool b);
     void setBoundingCircle(bool b);
@@ -52,11 +52,11 @@ private slots:
 
     void sceneScaleChanged(const QString &scale);
 
-    void itemColorChanged();
-    void lineColorChanged();
+//    void itemColorChanged();
+//    void lineColorChanged();
 
-    void fillButtonTriggered();
-    void lineButtonTriggered();
+//    void fillButtonTriggered();
+//    void lineButtonTriggered();
 
     void itemSelected(QGraphicsItem *item);
     void about();
@@ -87,10 +87,10 @@ private:
 
     QAction *aboutAction;
 
-    QMenu *fileMenu;
-    QMenu *shapeMenu;
+    QMenu * fileMenu;
+    QMenu * shapeMenu;
     QMenu * actionsMenu;
-    QMenu *aboutMenu;
+    QMenu * aboutMenu;
 
     QToolBar *textToolBar;
     QToolBar *editToolBar;

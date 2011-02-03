@@ -21,13 +21,8 @@ public:
     void addTempPoint(QPointF point);
 
     QGraphicsItem * getItem();
-    void translate(QPointF modifier);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-
-private:
-//    QPointF p1,p2;
-//    QPolygonF poly;
 };
 
 

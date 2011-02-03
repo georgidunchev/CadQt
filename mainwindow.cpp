@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "cadscene.h"
-//#include "caditem.h"
 #include "cadcontrolpointrectitem.h"
 #include <QtGui>
 #include <QLabel>
@@ -14,19 +13,16 @@ MainWindow::MainWindow()
     createActions();
     createMenus();
 
-    scene = new CadScene(/*itemMenu, */this);
+    scene = new CadScene(this);
     scene->setSceneRect(QRectF(0, 0, 1000, 1000));
     connect(scene, SIGNAL(itemInserted()), this, SLOT(itemInserted()));
     connect(scene, SIGNAL(itemSelected(QGraphicsItem*)), this, SLOT(itemSelected(QGraphicsItem*)));
     connect(scene, SIGNAL(setTracking(bool)), this, SLOT(setTracking(bool)));
-//    connect(scene, SIGNAL(setAutoOriginPointSignal(bool)), this, SLOT(setAutoOriginPoint(bool)));
 
     createToolbars();
 
     QHBoxLayout *layout = new QHBoxLayout;
-//    layout->addWidget(toolBox);
     view = new QGraphicsView(scene);
-//    view->setMouseTracking(true);
     layout->addWidget(view);
 
     QWidget *widget = new QWidget;
@@ -37,92 +33,70 @@ MainWindow::MainWindow()
     setUnifiedTitleAndToolBarOnMac(true);
 }
 
-void MainWindow::backgroundButtonGroupClicked(QAbstractButton *button)
-{
-    QList<QAbstractButton *> buttons = backgroundButtonGroup->buttons();
-    foreach (QAbstractButton *myButton, buttons) {
-    if (myButton != button)
-        button->setChecked(false);
-    }
-//    QString text = button->text();
-//    if (text == tr("Blue Grid"))
-//        scene->setBackgroundBrush(QPixmap(":/images/background1.png"));
-//    else if (text == tr("White Grid"))
-//        scene->setBackgroundBrush(QPixmap(":/images/background2.png"));
-//    else if (text == tr("Gray Grid"))
-//        scene->setBackgroundBrush(QPixmap(":/images/background3.png"));
-//    else
-//        scene->setBackgroundBrush(QPixmap(":/images/background4.png"));
-
-//    scene->update();
-    view->update();
-}
-
 void MainWindow::buttonGroupClicked(int id)
 {
-//    QList<QAbstractButton *> buttons = buttonGroup->buttons();
-//    foreach (QAbstractButton *button, buttons) {
-//    if (buttonGroup->button(id) != button)
-//        button->setChecked(false);
-//    }
-//    if (id != InsertTextButton) {
-//        scene->setMode(CadScene::InsertText);
-//    } else {
-//        scene->setItemType(CadItem::CadType(id));
-//        scene->setMode(CadScene::Mode(id));
-//        scene->setMode(CadScene::Mode(0));
         scene->setMode(CadScene::Mode(buttonGroup->checkedId()));
-//    }
 }
 
 void MainWindow::deleteItem()
 {
-//    foreach (QGraphicsItem *item, scene->selectedItems()) {
-//        if (item->type() == Arrow::Type) {
-//            scene->removeItem(item);
-//            Arrow *arrow = qgraphicsitem_cast<Arrow *>(item);
-//            arrow->startItem()->removeArrow(arrow);
-//            arrow->endItem()->removeArrow(arrow);
-//            delete item;
-//        }
-//    }
-
     foreach (QGraphicsItem *item, scene->selectedItems()) {
-//         if (item->type() == CadItem::Type) {
-//             qgraphicsitem_cast<CadItem *>(item)->removeArrows();
-//         }
          scene->removeItem(item);
          delete item;
      }
 }
 
-void MainWindow::pointerGroupClicked(int)
+void MainWindow::translateItem(bool b)
 {
-    scene->setMode(CadScene::Mode(pointerTypeGroup->checkedId()));
-}
+    if (scene->selectedItems().isEmpty())
+    {
+        translateAction->setChecked(false);
+        scene->setTransformationMode(CadScene::None);
+        return;
+    }
+    if(b)
+    {
+        scene->setTransformationMode(CadScene::Translate);
+        scaleAction->setChecked(false);
+        rotateAction->setChecked(false);
 
-/*void MainWindow::buttonGroupClicked(int)
-{
-    //scene->setMode(DiagramScene::Mode(pointerTypeGroup->checkedId()));
-}*/
-
-void MainWindow::translateItem()
-{
-    if (scene->selectedItems().isEmpty())        return;
-    CadItem * item = castQGraphicsItemToCadItem(scene->selectedItems().first());
-    if(item) item->translate(QPointF(10,10));
+    }
+    else
+        scene->setTransformationMode(CadScene::None);
 }
-void MainWindow::rotateItem()
+void MainWindow::rotateItem(bool b)
 {
-    if (scene->selectedItems().isEmpty())        return;
-    CadItem * item = castQGraphicsItemToCadItem(scene->selectedItems().first());
-    if(item) item->rotate(60);
+    if (scene->selectedItems().isEmpty())
+    {
+        scaleAction->setChecked(false);
+        scene->setTransformationMode(CadScene::None);
+        return;
+    }
+    if(b)
+    {
+        scene->setTransformationMode(CadScene::Rotate);
+        scaleAction->setChecked(false);
+        translateAction->setChecked(false);
+    }
+    else
+        scene->setTransformationMode(CadScene::None);
 }
-void MainWindow::scaleItem()
+void MainWindow::scaleItem(bool b)
 {
-    if (scene->selectedItems().isEmpty())        return;
-    CadItem * item = castQGraphicsItemToCadItem(scene->selectedItems().first());
-    if(item) item->scale(QPointF(0.7,0.5));
+    if (scene->selectedItems().isEmpty())
+    {
+        scaleAction->setChecked(false);
+        scene->setTransformationMode(CadScene::None);
+        return;
+    }
+    if(b)
+    {
+        scene->setTransformationMode(CadScene::Scale);
+        rotateAction->setChecked(false);
+        translateAction->setChecked(false);
+    }
+    else
+        scene->setTransformationMode(CadScene::None);
 }
 void MainWindow::resetOriginPoint()
 {
@@ -145,36 +119,13 @@ void MainWindow::showControlPoints(bool b)
 {
     scene->setControlPoints(b);
     scene->update(scene->sceneRect());
-//    if (scene->selectedItems().isEmpty())        return;
-//    castQGraphicsItemToCadItem(scene->selectedItems().first())->scale(QPointF(0.7,0.5));
 }
-
-
-
-//void MainWindow::sendToBack()
-//{
-////    if (scene->selectedItems().isEmpty())
-////        return;
-
-////    QGraphicsItem *selectedItem = scene->selectedItems().first();
-////    QList<QGraphicsItem *> overlapItems = selectedItem->collidingItems();
-
-////    qreal zValue = 0;
-////    foreach (QGraphicsItem *item, overlapItems) {
-////        if (item->zValue() <= zValue &&
-////            item->type() == CadItem::Type)
-////            zValue = item->zValue() - 0.1;
-////    }
-////    selectedItem->setZValue(zValue);
-//}
 
 void MainWindow::itemInserted()
 {
     buttonGroup->button(int(CadScene::Select))->setChecked(true);
     scene->setMode(CadScene::Select);
     setTracking(false);
-//    tuk gyrmi!
-//    buttonGroup->button(int(item->cadType()))->setChecked(false);
 }
 void MainWindow::setTracking(bool b)
 {
@@ -190,32 +141,6 @@ void MainWindow::sceneScaleChanged(const QString &scale)
 //    view->scale(newScale, newScale);
 }
 
-void MainWindow::itemColorChanged()
-{
-    fillAction = qobject_cast<QAction *>(sender());
-//    fillColorToolButton->setIcon(createColorToolButtonIcon( ":/images/floodfill.png", qVariantValue<QColor>(fillAction->data())));
-    fillButtonTriggered();
-}
-
-void MainWindow::lineColorChanged()
-{
-    lineAction = qobject_cast<QAction *>(sender());
-//    lineColorToolButton->setIcon(createColorToolButtonIcon(
-//                 ":/images/linecolor.png",
-//                 qVariantValue<QColor>(lineAction->data())));
-    lineButtonTriggered();
-}
-
-void MainWindow::fillButtonTriggered()
-{
-    //scene->setItemColor(qVariantValue<QColor>(fillAction->data()));
-}
-
-void MainWindow::lineButtonTriggered()
-{
-    //scene->setLineColor(qVariantValue<QColor>(lineAction->data()));
-}
-
 void MainWindow::itemSelected(QGraphicsItem *item)
 {
     int a=1;
@@ -224,9 +149,9 @@ void MainWindow::itemSelected(QGraphicsItem *item)
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, tr("About Diagram Scene"),
-                       tr("The <b>Diagram Scene</b> example shows "
-                          "use of the graphics framework."));
+    QMessageBox::about(this, tr("About CadQt"),
+                       tr("This is a course work for university.\n "
+                          "Initially based on the diagram scene tutorial from Qt Creator."));
 }
 
 void MainWindow::createActions()
@@ -237,13 +162,19 @@ void MainWindow::createActions()
     connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteItem()));
 
     translateAction = new QAction(QIcon(":/images/translate.png"), tr("Traslate"), this);
-    connect(translateAction, SIGNAL(triggered()), this, SLOT(translateItem()));
+    translateAction->setCheckable(true);
+    translateAction->setShortcut(Qt::Key_T);
+    connect(translateAction, SIGNAL(triggered(bool)), this, SLOT(translateItem(bool)));
 
     rotateAction = new QAction(QIcon(":/images/rotate.png"), tr("Rotate"), this);
-    connect(rotateAction, SIGNAL(triggered()), this, SLOT(rotateItem()));
+    rotateAction->setCheckable(true);
+    rotateAction->setShortcut(Qt::Key_R);
+    connect(rotateAction, SIGNAL(triggered(bool)), this, SLOT(rotateItem(bool)));
 
     scaleAction = new QAction(QIcon(":/images/scale.png"), tr("Scale"), this);
-    connect(scaleAction, SIGNAL(triggered()), this, SLOT(scaleItem()));
+    scaleAction->setCheckable(true);
+    scaleAction->setShortcut(Qt::Key_S);
+    connect(scaleAction, SIGNAL(triggered(bool)), this, SLOT(scaleItem(bool)));
 
     showCircleAction = new QAction(QIcon(":/images/findCircle.png"), tr("Show Bounding Circle"), this);
     showCircleAction->setCheckable(true);
@@ -251,12 +182,13 @@ void MainWindow::createActions()
 
     showControlPointsAction = new QAction(QIcon(":/images/controlPoints.png"), tr("Show Control Points"), this);
     showControlPointsAction->setCheckable(true);
+    showControlPointsAction->setChecked(true);
+    showControlPointsAction->setShortcut(Qt::Key_C);
     connect(showControlPointsAction, SIGNAL(triggered(bool)), this, SLOT(showControlPoints(bool)));
 
     resetOriginPointAction = new QAction(QIcon(":/images/originPoint.png"), tr("Set Auto Origin Point"), this);
-//    setAutoOriginPointAction->setCheckable(true);
-//    setAutoOriginPointAction->setChecked(true);
     connect(resetOriginPointAction, SIGNAL(triggered()), this, SLOT(resetOriginPoint()));
+    resetOriginPointAction->setShortcut(Qt::Key_O);
 
     exitAction = new QAction(tr("E&xit"), this);
     exitAction->setShortcuts(QKeySequence::Quit);
@@ -265,14 +197,14 @@ void MainWindow::createActions()
 
     aboutAction = new QAction(tr("A&bout"), this);
     aboutAction->setShortcut(tr("Ctrl+B"));
-    connect(aboutAction, SIGNAL(triggered()),
-            this, SLOT(about()));
+    connect(aboutAction, SIGNAL(triggered()), this, SLOT(about()));
 }
 
 void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(exitAction);
+    fileMenu->addAction(aboutAction);
     actionsMenu = menuBar()->addMenu("Actions");
     actionsMenu->addAction(translateAction);
     actionsMenu->addAction(rotateAction);
@@ -289,22 +221,27 @@ void MainWindow::createToolbars()
     QToolButton *selectorButton = new QToolButton;
     selectorButton->setCheckable(true);
     selectorButton->setChecked(true);
+    selectorButton->setShortcut(Qt::Key_Escape);
     selectorButton->setIcon(QIcon(":/images/pointer.png"));
 
     QToolButton *drawLineButton = new QToolButton;
     drawLineButton->setCheckable(true);
+    drawLineButton->setShortcut(Qt::Key_F1);
     drawLineButton->setIcon(QIcon(":/images/drawLine.png"));
 
     QToolButton *drawCurveButton = new QToolButton;
     drawCurveButton->setCheckable(true);
+    drawCurveButton->setShortcut(Qt::Key_F2);
     drawCurveButton->setIcon(QIcon(":/images/drawCurve.png"));
 
     QToolButton *drawRectButton = new QToolButton;
     drawRectButton->setCheckable(true);
+    drawRectButton->setShortcut(Qt::Key_F3);
     drawRectButton->setIcon(QIcon(":/images/drawRect.png"));
 
     QToolButton *drawPolygonButton = new QToolButton;
     drawPolygonButton->setCheckable(true);
+    drawPolygonButton->setShortcut(Qt::Key_F4);
     drawPolygonButton->setIcon(QIcon(":/images/drawPolygon.png"));
 
     buttonGroup = new QButtonGroup(this);

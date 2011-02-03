@@ -12,6 +12,7 @@ public:
     void updatePoints(const QPolygonF & newPoints, const QPointF & newOriginPoint);
     void setOriginPoint(const QPointF & newOriginPoint);
     void updateOriginPoint(const QPointF & newOriginPoint);
+    QPointF getOriginPoint() const;
     void setVisible(bool visible);
     bool controlPointSelected();
 private:

@@ -3,48 +3,36 @@
 //#include "cadboundingcircle.h"
 #include <QtGui>
 
-CadScene::CadScene(/*QMenu *itemMenu,*/ QObject *parent)
+CadScene::CadScene(QObject *parent)
     : QGraphicsScene(parent)
 {
     bBoundingCircle = false;
-    bControlPoints = false;
+    bControlPoints = true;
     bAutoOriginPoint = true;
-//    myItemMenu = itemMenu;
-    myMode = MoveItem;
+//    myMode = MoveItem;
+    myTransMode = None;
     myItemType = CadItem::Step;
     line = 0;
-    //    textItem = 0;
-    myItemColor = Qt::white;
-    myTextColor = Qt::black;
-    myLineColor = Qt::black;
-}
-//! [0]
-
-//! [1]
-void CadScene::setLineColor(const QColor &color)
-{
-    myLineColor = color;
-    //    if (isItemChange(Arrow::Type)) {
-    //        Arrow *item =
-    //            qgraphicsitem_cast<Arrow *>(selectedItems().first());
-    //        item->setColor(myLineColor);
-    //        update();
-    //    }
-}
-
-void CadScene::setItemColor(const QColor &color)
-{
-    myItemColor = color;
-    //    if (isItemChange(CadItem::Type)) {
-    //        CadItem *item =
-    //            qgraphicsitem_cast<CadItem *>(selectedItems().first());
-    //        item->setBrush(myItemColor);
-    //    }
 }
 
 void CadScene::setMode(Mode mode)
 {
     myMode = mode;
+}
+
+int CadScene::getMode()
+{
+    return myMode;
+}
+
+void CadScene::setTransformationMode(transformationMode mode)
+{
+    myTransMode = mode;
+}
+
+uint CadScene::getTransMode()
+{
+    return myTransMode;
 }
 
 void CadScene::setItemType(CadItem::CadType type)
@@ -63,7 +51,6 @@ void CadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
         {
         case Select:
             {
-//                myMode = MoveItem;
                 QGraphicsScene::mousePressEvent(mouseEvent);
                 return;
             }
@@ -79,7 +66,6 @@ void CadScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
                             tempItem->addPoint(mouseEvent->scenePos());
                             if(tempItem->isFinished())
                             {
-                                //                            myMode=Select;
                                 emit itemInserted();
                             }
                         }
@@ -250,52 +236,12 @@ void CadScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
 void CadScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
-    /*  if (line != 0 && myMode == InsertCurve) {
-        QList<QGraphicsItem *> startItems = items(line->line().p1());
-        if (startItems.count() && startItems.first() == line)
-            startItems.removeFirst();
-        QList<QGraphicsItem *> endItems = items(line->line().p2());
-        if (endItems.count() && endItems.first() == line)
-            endItems.removeFirst();
-
-        removeItem(line);
-        delete line;
-//! [11] //! [12]
-
-//        if (startItems.count() > 0 && endItems.count() > 0 &&
-//            startItems.first()->type() == CadItem::Type &&
-//            endItems.first()->type() == CadItem::Type &&
-//            startItems.first() != endItems.first()) {
-//            CadItem *startItem =
-//                qgraphicsitem_cast<CadItem *>(startItems.first());
-//            CadItem *endItem =
-//                qgraphicsitem_cast<CadItem *>(endItems.first());
-//            Arrow *arrow = new Arrow(startItem, endItem);
-//            arrow->setColor(myLineColor);
-//            startItem->addArrow(arrow);
-//            endItem->addArrow(arrow);
-//            arrow->setZValue(-1000.0);
-//            addItem(arrow);
-//            arrow->updatePosition();
-//        }
-    }
-//! [12] //! [13]
-    line = 0;*/
-    QGraphicsScene::mouseReleaseEvent(mouseEvent);
+     QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
 
 void CadScene::setBoundingCircle(bool b)
 {
     bBoundingCircle=b;
-//    if(bBoundingCircle==false)
-//    {
-        //remove bounding circle
-//        removeItem(boundingCircle);
-//    }
-//    if(myMode==Drawing)
-//    {
-//        showBoundingCircle(tempItem);
-//    }
 }
 bool CadScene::isBoundingCircleOn()
 {
@@ -312,23 +258,6 @@ bool CadScene::isControlPointsOn()
     return bControlPoints;
 }
 
-//void CadScene::setAutoOriginPoint()
-//{
-//    selectedItems().first()->
-//}
-//bool CadScene::isAutoOriginPointOn()
-//{
-//    return bAutoOriginPoint;
-//}
-
-//void CadScene::showBoundingCircle(CadItem *item)
-//{
-////    bBoundingCircle=true;
-//    //create bounding circle
-////    boundingCircle = new CadBoundingCircle(item);
-////    addItem(boundingCircle);
-//}
-
 bool CadScene::isItemChange(int type)
 {
     foreach (QGraphicsItem *item, selectedItems()) {
@@ -337,4 +266,3 @@ bool CadScene::isItemChange(int type)
     }
     return false;
 }
-//! [14]

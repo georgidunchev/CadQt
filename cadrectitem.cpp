@@ -7,9 +7,8 @@ CadRectItem::CadRectItem(CadType cadType)
     : CadItem(cadType)
 {
     nOfPoints=0;
-    QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
+//    QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
     QGraphicsItem::setFlag(QGraphicsItem::ItemIsSelectable, true);
-//    setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
     QColor color = Qt::black;
     setPen(QPen(color, 2));
 
@@ -27,7 +26,6 @@ bool CadRectItem::isFinished()
     {
         setConstructed(true);
         setControlPointsItem();
-//        controlPointsGroup->setPoints(getPointsPolygon());
         return true;
     }
     else
@@ -47,7 +45,6 @@ void CadRectItem::addPoint(QPointF point)
         QPointF first = pointPolygon.first();
         pointPolygon.clear();
         pointPolygon = rectToPoly(first, point);
-//        boundingCircle->setPoints(getPointsPolygon());
         nOfPoints=2;
     }
     setShape();
@@ -79,7 +76,6 @@ void CadRectItem::updatePointsPolygon(int id, QPointF newPoint)
     {
     case 0:
         {
-//            pointPolygon[0]=newPoint;
             pointInOriginalSpace = pointPolygon[0];
             tmp = pointPolygon.at(1);
             tmp.setX(pointInOriginalSpace.x());
@@ -131,13 +127,6 @@ void CadRectItem::updatePointsPolygon(int id, QPointF newPoint)
 QGraphicsItem * CadRectItem::getItem()
 {
     return this;
-}
-
-void CadRectItem::translate(QPointF modifier)
-{
-    QTransform transform;
-    transform.translate(modifier.rx(), modifier.ry());
-    QGraphicsItem::setTransform(transform,true);
 }
 
 void CadRectItem::setShape(bool transform)

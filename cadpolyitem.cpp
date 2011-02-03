@@ -4,9 +4,8 @@
 
 CadPolyItem::CadPolyItem(CadType cadType) : CadItem(cadType)
 {
-    QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
+//    QGraphicsItem::setFlag(QGraphicsItem::ItemIsMovable, true);
     QGraphicsItem::setFlag(QGraphicsItem::ItemIsSelectable, true);
-//    QGraphicsItem::setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
     QColor color = Qt::black;
     setPen(QPen(color, 2));
 
@@ -24,7 +23,6 @@ bool CadPolyItem::isFinished()
     {
         setConstructed(true);
         setControlPointsItem();
-//        controlPointsGroup->setPoints(getPointsPolygon());
         return true;
     }
     else
@@ -67,13 +65,6 @@ void CadPolyItem::addTempPoint(QPointF point)
 QGraphicsItem * CadPolyItem::getItem()
 {
     return this;
-}
-
-void CadPolyItem::translate(QPointF modifier)
-{
-    QTransform transform;
-    transform.translate(modifier.rx(), modifier.ry());
-    QGraphicsItem::setTransform(transform,true);
 }
 
 void CadPolyItem::setShape(bool transform)

@@ -9,7 +9,6 @@ class CadItem;
 
 class CadControlPointRectItem : public QGraphicsRectItem
 {
-//        Q_OBJECT
 public:
     CadControlPointRectItem(int id, const QPointF & point, CadItem * parentCI,  QGraphicsItem * parent = 0, bool edgePoint = true);
 
@@ -30,6 +29,10 @@ private:
     bool isEdgePoint;
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    uint calcLineLength(const QPointF & A, const QPointF & B);
+
+    QPointF tmpPos,factor;
+    double rotAngle;
 };
 
 #endif // CADCONTROLPOINTRECTITEM_H

@@ -25,6 +25,7 @@ public:
     virtual void updateOriginPoint(QPointF newPoint);
     virtual void resetOriginPoint();
     virtual void setOriginPoint();
+    QPointF getOriginPoint() const;
 
     virtual void setBoundingCircle(bool b);
     virtual void setControlPoints(bool b);
@@ -35,9 +36,11 @@ public:
 
     virtual QGraphicsItem * getItem();
 
-    virtual void translate(QPointF modifier);
-    virtual void rotate(qreal angle);
-    virtual void scale(QPointF factor);
+    virtual void translate(QPointF modifier, bool temporal = false);
+    virtual void rotate(qreal angle, bool temporal = false); //qreal angle);
+    virtual void scale(QPointF factor, bool temporal = false);
+
+    void setTempTransformations(bool b);
 
     virtual void setShape(bool transform = true);
 
@@ -50,8 +53,7 @@ protected:
     QPolygonF points; // current points
     qreal rotAngle;
     QPointF scaleFactor;
-    qreal transformMatrix[3][3];
-//    QVector2D<qreal> multiplier();
+    qreal transformMatrix[3][3], tempTransformMatrix[3][3];
     QPointF originPoint;
     int nOfPoints;
 

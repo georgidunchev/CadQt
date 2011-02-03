@@ -25,45 +25,27 @@ class CadScene : public QGraphicsScene
     Q_OBJECT
 
 public:
-    enum Mode { Select, Drawing, InsertLine, InsertCurve, InsertRect, InsertPolygon, MoveItem };
+    enum Mode { Select, Drawing, InsertLine, InsertCurve, InsertRect, InsertPolygon,/* MoveItem,*/};
+    enum transformationMode { None, Translate, Rotate, Scale };
 
-    CadScene(/*QMenu *itemMenu,*/ QObject *parent = 0);
+    CadScene(QObject *parent = 0);
 
-    QFont font() const
-        { return myFont; }
-    QColor textColor() const
-        { return myTextColor; }
-    QColor itemColor() const
-        { return myItemColor; }
-    QColor lineColor() const
-        { return myLineColor; }
-    void setLineColor(const QColor &color);
-//    void setTextColor(const QColor &color);
-    void setItemColor(const QColor &color);
-//    void setFont(const QFont &font);
     void setBoundingCircle(bool b);
     bool isBoundingCircleOn();
-//    void setBoundingCircle(CadItem *item);
     void setControlPoints(bool b);
     bool isControlPointsOn();
-
-//    void setAutoOriginPoint(bool b);
-//    bool isAutoOriginPointOn();
-
-
+    int getMode();
+    void setTransformationMode(transformationMode mode);
+    uint getTransMode();
 
 public slots:
     void setMode(Mode mode);
     void setItemType(CadItem::CadType type);
-//    void editorLostFocus(DiagramTextItem *item);
 
 signals:
     void itemInserted();
-//    void textInserted(QGraphicsTextItem *item);
     void itemSelected(QGraphicsItem *item);
     void setTracking(bool b);
-//    void setAutoOriginPointSignal(bool b);
-
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);
@@ -76,19 +58,14 @@ private:
     bool bBoundingCircle;
     bool bControlPoints;
     bool bAutoOriginPoint;
-//    CadBoundingCircle * boundingCircle;
 
     CadItem::CadType myItemType;
     QMenu *myItemMenu;
     Mode myMode;
+    transformationMode myTransMode;
     bool leftButtonDown;
     QPointF startPoint;
     CadLineItem *line;
     CadItem *tempItem;
-    QFont myFont;
-//    DiagramTextItem *textItem;
-    QColor myTextColor;
-    QColor myItemColor;
-    QColor myLineColor;
 };
 #endif // CADSCENE_H

@@ -19,13 +19,11 @@ public:
     void addPoint(QPointF point);
     void addTempPoint(QPointF point);
     QGraphicsItem * getItem();
-    void translate(QPointF modifier);
     void setShape(bool transform = true);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 
 private:
-    QPointF p1,p2;
     int nOfPoints;
 };
 
